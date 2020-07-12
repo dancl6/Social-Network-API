@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const moment = require('moment');
+// const moment = require('moment');
 var mongoose = require('mongoose');
 require('mongoose-type-email');
 
@@ -33,8 +33,8 @@ const UserSchema = new Schema({
     toJSON: {
         virtuals: true,
         getters: true
-      }
-    // id: false
+      },
+    id: false
   }
   );
     // get total count of comments and replies on retrieval

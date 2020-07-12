@@ -18,7 +18,7 @@ const ThoughtSchema = new Schema({
         type: String,
         required: true
     },
-    reactions: {
+    reactions:[ {
         reactionId: {
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId()
@@ -37,7 +37,7 @@ const ThoughtSchema = new Schema({
             default: Date.now,
             get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
         }
-    },
+    }],
   },
   {
     toJSON: {
