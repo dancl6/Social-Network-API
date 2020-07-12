@@ -38,6 +38,10 @@ Developed by Dan Lyons and Trilogy Education
 
 Create, modify and delete a user, thought and reply.
 
+## Walk-through
+
+https://drive.google.com/file/d/1YwYxgj3QM4imkQfR3gKVcCiOzXpOU1sc/view 
+
 ## Questions
 
 [User Git Hub Link](https://github.com/dancl6/Social-Network-API  "Git Hub Link")
