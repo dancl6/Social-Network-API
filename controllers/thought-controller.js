@@ -76,6 +76,30 @@ const thoughtController ={
       })
       .catch(err => res.status(400).json(err));
   },
+  createReaction({ params, body }, res) {
+    Thought.findOneAndUpdate(
+      { _id: params.thoughtId },
+      { $push: { reactions: body } },
+      { new: true, runValidators: true  },
+    )
+      .then(dbPizzaData => {
+        if (!dbPizzaData) {
+          res.status(404).json({ message: 'No pizza found with this id!' });
+          return;
+        }
+        res.json(dbPizzaData);
+      })
+      .catch(err => res.json(err));
+  },
+  removeReaction({ params }, res) {
+    Thought.findOneAndUpdate(
+      { _id: params.thoughtId },
+      { $pull: { reactions: { reactionId: params.reactionId } } },
+      { new: true }
+    )
+      .then(dbPizzaData => res.json(dbPizzaData))
+      .catch(err => res.json(err));
+  }
 //   addFriend({ params }, res) {
 //     console.log("I'm at add friend")
 //     console.log(params);
