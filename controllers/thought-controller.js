@@ -27,9 +27,7 @@ const thoughtController ={
 
     .then(({ _id }) =>{
         console.log(" i am at create thought 2")
-        // console.log(_id)
         console.log(body.userId)
-        // console.log(body)
     User.findOneAndUpdate(
         {_id: body.userId},
         { $push: {thoughts: _id }},
