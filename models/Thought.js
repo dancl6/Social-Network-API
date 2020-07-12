@@ -1,6 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 const moment = require('moment');
-// require('mongoose-type-email');
+
 
 const ThoughtSchema = new Schema({
     thoughtText: {
@@ -44,16 +44,16 @@ const ThoughtSchema = new Schema({
         virtuals: true,
         getters: true
       }
-    // id: false
+
   }
   );
-    // get total count of comments and replies on retrieval
+    // get total count of reactions on retrieval
     ThoughtSchema.virtual('reactionCount').get(function() {
         return this.reactions.length;
       });
 
-  // create the User model using the UserSchema
+  // create the Thought model using the UserSchema
 const Thought = model('Thought', ThoughtSchema);
 
-// export the Pizza model
+// export the Thought model
 module.exports = Thought;

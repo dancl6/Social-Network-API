@@ -1,14 +1,9 @@
 const { User } = require('../models');
-
+// create the user routes
 const userController ={
 
   getAllUser(req, res) {
     User.find({})
-    //   .populate({
-    //     path: 'thoughts',
-    //     path: 'friends',
-    //     select: '-__v'
-    //   })
       .select('-__v')
       .sort({ _id: -1 })
       .then(dbUserData => res.json(dbUserData))
@@ -74,16 +69,16 @@ const userController ={
       res.json(dbFriend);
     })
     .catch(err => res.json(err));
-},
-deleteFriend({ params }, res) {
-  User.findOneAndUpdate(
-    { _id: params.userId },
-    { $pull: { friends: params.friendId }  },
-    { new: true }
-  )
-    .then(dbFriendData => res.json(dbFriendData))
-    .catch(err => res.json(err));
-}
+    },
+    deleteFriend({ params }, res) {
+      User.findOneAndUpdate(
+        { _id: params.userId },
+        { $pull: { friends: params.friendId }  },
+        { new: true }
+      )
+        .then(dbFriendData => res.json(dbFriendData))
+        .catch(err => res.json(err));
+    }
 }
 
 module.exports = userController;

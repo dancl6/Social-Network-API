@@ -1,14 +1,9 @@
 const { User, Thought } = require('../models');
-
+// create the thought routes
 const thoughtController ={
 
   getAllThoughts(req, res) {
     Thought.find({})
-    //   .populate({
-    //     path: 'thoughts',
-    //     path: 'friends',
-    //     select: '-__v'
-    //   })
       .select('-__v')
       .sort({ _id: -1 })
       .then(dbThoughtData => res.json(dbThoughtData))
@@ -19,14 +14,6 @@ const thoughtController ={
   },
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
-    // console.log("i am at get thought by id")
-    // console.log(params.id)
-    //   .populate({
-    //     path: 'thoughts',
-    //     path: 'friends',
-    //     select: '-__v'
-    //   })
-      // .select('-__v')
       .then(dbThoughtData => res.json(dbThoughtData))
       .catch(err => {
         console.log(err);
@@ -101,22 +88,6 @@ const thoughtController ={
       .then(dbPizzaData => res.json(dbPizzaData))
       .catch(err => res.json(err));
   }
-//   addFriend({ params }, res) {
-//     console.log("I'm at add friend")
-//     console.log(params);
-//     User.findOneAndUpdate(
-//       {_id: params.userId},
-//       { $push: { friends: params.friendId }}
-//     )
-//     .then(dbFriend => {
-//       if (!dbFriend) {
-//         res.status(404).json({ message: 'No user found with this id!' });
-//         return;
-//       }
-//       res.json(dbFriend);
-//     })
-//     .catch(err => res.json(err));
-// }
 }
 
 module.exports = thoughtController;

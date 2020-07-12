@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-// const moment = require('moment');
+// import the npm package for verifying that email is a valid email
 var mongoose = require('mongoose');
 require('mongoose-type-email');
 
@@ -37,7 +37,7 @@ const UserSchema = new Schema({
     id: false
   }
   );
-    // get total count of comments and replies on retrieval
+    // get total count of friends on retrieval
     UserSchema.virtual('friendCount').get(function() {
         return this.friends.length;
       });
@@ -45,5 +45,5 @@ const UserSchema = new Schema({
   // create the User model using the UserSchema
 const User = model('User', UserSchema);
 
-// export the Pizza model
+// export the User model
 module.exports = User;
