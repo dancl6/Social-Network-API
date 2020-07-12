@@ -17,15 +17,16 @@ const thoughtController ={
         res.sendStatus(400);
       });
   },
-
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
+    // console.log("i am at get thought by id")
+    // console.log(params.id)
     //   .populate({
     //     path: 'thoughts',
     //     path: 'friends',
     //     select: '-__v'
     //   })
-      .select('-__v')
+      // .select('-__v')
       .then(dbThoughtData => res.json(dbThoughtData))
       .catch(err => {
         console.log(err);
